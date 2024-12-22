@@ -58,10 +58,12 @@ lv_ui guider_ui;
 static void ChackKey(void *arg);
 static void Get_Ina226_Data(void *arg);
 static void ChackData_Alarm(void *arg);
+static void Beep_Task(void *arg);
 // static void LED_Task(void *arg);
 
 
 static QueueHandle_t alarm_evt_queue ;
+static QueueHandle_t beep_evt_queue ;
 
 void app_main(void)
 {
@@ -75,7 +77,7 @@ void app_main(void)
     ESP_ERROR_CHECK(ret);
 
     Key_Init();
-    BeepInitConfig();
+    // BeepInitConfig();
     wifi_init_softap();
 
     // vTaskDelay(pdMS_TO_TICKS(500));
@@ -113,29 +115,38 @@ void app_main(void)
 
     //创建一个队列来处理告警事件
     alarm_evt_queue = xQueueCreate(5, sizeof(uint32_t));
+    beep_evt_queue = xQueueCreate(5, sizeof(uint32_t));
 
     //创建一个按键检测任务
     xTaskCreate(ChackKey,        //任务函数
                 "ChackKey_task",      //任务名字
                 1024,                           //任务堆栈
                 NULL,                           //传递给任务函数的参数
-                10,                             //任务优先级
+                6,                             //任务优先级
                 NULL                            //任务句柄
      );
     //创建一个告警任务
-    xTaskCreate(ChackData_Alarm,        //任务函数
-                "ChackData_Alarm_task",      //任务名字
-                1024,                           //任务堆栈
-                NULL,                           //传递给任务函数的参数
-                5,                             //任务优先级
-                NULL                            //任务句柄
-     );
+    // xTaskCreate(ChackData_Alarm,        //任务函数
+    //             "ChackData_Alarm_task",      //任务名字
+    //             1024,                           //任务堆栈
+    //             NULL,                           //传递给任务函数的参数
+    //             5,                             //任务优先级
+    //             NULL                            //任务句柄
+    //  );
     //创建一个ina226读取任务
     xTaskCreate(Get_Ina226_Data,        //任务函数
                 "Get_INA226_task",      //任务名字
                 2048,                           //任务堆栈
                 NULL,                           //传递给任务函数的参数
                 5,                             //任务优先级
+                NULL                            //任务句柄
+     );
+     //创建一个蜂鸣器任务
+     xTaskCreate(Beep_Task,        //任务函数
+                "Beep_Task",      //任务名字
+                1024,                           //任务堆栈
+                NULL,                           //传递给任务函数的参数
+                6,                             //任务优先级
                 NULL                            //任务句柄
      );
      //创建一个WS2812b显示任务
@@ -180,7 +191,8 @@ static void ChackKey(void *arg)
         {
             lv_obj_t *nowScr=lv_scr_act();
             lv_event_send(nowScr, LV_EVENT_PRESSING, NULL);//手动发送LV_EVENT_CANCEL事件
-            vTaskDelay(pdMS_TO_TICKS(100));
+            xQueueSend(beep_evt_queue, &nowvalue, portMAX_DELAY);
+            vTaskDelay(pdMS_TO_TICKS(200));
         }
 
         vTaskDelay(pdMS_TO_TICKS(100));
@@ -195,7 +207,7 @@ static void Get_Ina226_Data(void *arg)
         // ESP_LOGI("UserPrintf:", "Voltage:%f,Current:%f,Power:%f", Voltage, Current, Power);
         if (Voltage > 28.0f)
         {
-            xQueueSend(alarm_evt_queue, &Voltage, portMAX_DELAY);
+            // xQueueSend(alarm_evt_queue, &Voltage, portMAX_DELAY);
         }
 
         vTaskDelay(pdMS_TO_TICKS(10));
@@ -208,11 +220,11 @@ static void ChackData_Alarm(void *arg)
     float alarm_flag = 0;
     for(;;)
     {
-        if (xQueueReceive(alarm_evt_queue, &alarm_flag, 20 / portTICK_PERIOD_MS)){
-            Beep_ON();
-        }else{
-            Beep_OFF();
-        }
+        // if (xQueueReceive(alarm_evt_queue, &alarm_flag, 20 / portTICK_PERIOD_MS)){
+        //     Beep_ON();
+        // }else{
+        //     Beep_OFF();
+        // }
 
         vTaskDelay(pdMS_TO_TICKS(10));
     }
@@ -231,3 +243,23 @@ static void ChackData_Alarm(void *arg)
 //         vTaskDelay(pdMS_TO_TICKS(100));
 //     }
 // }
+
+static void Beep_Task(void *arg)
+{
+    BeepInitConfig();
+    ESP_LOGI("UserPrintf:", "Beep_Task Start!");
+    Beep_ON();
+    vTaskDelay(pdMS_TO_TICKS(250));
+    Beep_OFF();
+
+    float temp;
+    for(;;)
+    {
+        if (xQueueReceive(beep_evt_queue, &temp, 20 / portTICK_PERIOD_MS)){
+            Beep_ON();
+        }else{
+            Beep_OFF();
+        }
+        vTaskDelay(pdMS_TO_TICKS(100));
+    }
+}
