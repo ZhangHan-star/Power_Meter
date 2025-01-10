@@ -1,15 +1,15 @@
 /*
- * Copyright 2024 NXP
- * NXP Confidential and Proprietary. This software is owned or controlled by NXP and may only be used strictly in
- * accordance with the applicable license terms. By expressly accepting such terms or by downloading, installing,
- * activating and/or otherwise using the software, you are agreeing that you have read, and that you agree to
- * comply with and are bound by, such license terms.  If you do not agree to be bound by the applicable license
- * terms, then you may not retain, install, activate or otherwise use the software.
- */
+ * Copyright 2025 NXP
+* NXP Proprietary. This software is owned or controlled by NXP and may only be used strictly in
+* accordance with the applicable license terms. By expressly accepting such terms or by downloading, installing,
+* activating and/or otherwise using the software, you are agreeing that you have read, and that you agree to
+* comply with and are bound by, such license terms.  If you do not agree to be bound by the applicable license
+* terms, then you may not retain, install, activate or otherwise use the software.
+*/
 /*******************************************************************************
  * Size: 10 px
  * Bpp: 4
- * Opts: --user-data-dir=C:\Users\ZhangHan\AppData\Roaming\gui-guider --app-path=D:\Gui-Guider\resources\app.asar --no-sandbox --no-zygote --lang=zh-CN --device-scale-factor=1.75 --num-raster-threads=4 --enable-main-frame-before-activation --renderer-client-id=5 --time-ticks-at-unix-epoch=-1728571574076022 --launch-time-ticks=71061465147 --mojo-platform-channel-handle=3008 --field-trial-handle=1736,i,6653955815522881535,10934477205252190499,131072 --disable-features=SpareRendererForSitePerProcess,WinRetrieveSuggestionsOnlyOnDemand /prefetch:1
+ * Opts: undefined
  ******************************************************************************/
 
 #ifdef LV_LVGL_H_INCLUDE_SIMPLE
@@ -45,7 +45,7 @@ static LV_ATTRIBUTE_LARGE_CONST const uint8_t glyph_bitmap[] = {
 
     /* U+0024 "$" */
     0x0, 0x0, 0x0, 0x70, 0x2c, 0xf4, 0x97, 0x80,
-    0x3d, 0xd2, 0x38, 0x97, 0x9f, 0xb1, 0x6, 0x0,
+    0x3d, 0xd2, 0x38, 0x97, 0x9f, 0xb1, 0x16, 0x0,
     0x0, 0x0,
 
     /* U+0025 "%" */
@@ -230,7 +230,7 @@ static LV_ATTRIBUTE_LARGE_CONST const uint8_t glyph_bitmap[] = {
     /* U+004D "M" */
     0x0, 0x0, 0x0, 0x2, 0xe9, 0x0, 0xea, 0x2f,
     0xe0, 0x4f, 0xa2, 0xed, 0x3a, 0xba, 0x3d, 0x89,
-    0xc7, 0xa3, 0xd3, 0xf8, 0x7b, 0x4d, 0x2, 0x7,
+    0xd7, 0xa3, 0xd3, 0xf8, 0x7b, 0x4d, 0x2, 0x7,
     0xc5, 0xe0, 0x0, 0x7d,
 
     /* U+004E "N" */
@@ -267,7 +267,7 @@ static LV_ATTRIBUTE_LARGE_CONST const uint8_t glyph_bitmap[] = {
     0xf9, 0x0,
 
     /* U+0054 "T" */
-    0xff, 0xff, 0xd2, 0x4f, 0x11, 0x3, 0xf0, 0x0,
+    0xff, 0xff, 0xc2, 0x4f, 0x11, 0x3, 0xf0, 0x0,
     0x3f, 0x0, 0x3, 0xf0, 0x0, 0x3f, 0x0, 0x4,
     0xf1, 0x0,
 
@@ -436,7 +436,7 @@ static LV_ATTRIBUTE_LARGE_CONST const uint8_t glyph_bitmap[] = {
     0x80, 0x1, 0xe3, 0x0, 0x0, 0x0, 0x0,
 
     /* U+007A "z" */
-    0x0, 0x0, 0x8, 0xff, 0xd0, 0x11, 0xd5, 0x0,
+    0x0, 0x0, 0x9, 0xff, 0xd0, 0x11, 0xd5, 0x0,
     0x8a, 0x0, 0x3e, 0x21, 0xa, 0xff, 0xf0,
 
     /* U+007B "{" */
@@ -483,7 +483,7 @@ static LV_ATTRIBUTE_LARGE_CONST const uint8_t glyph_bitmap[] = {
     /* U+F00C "" */
     0x0, 0x0, 0x0, 0x0, 0x41, 0x0, 0x0, 0x0,
     0x6, 0xfd, 0x0, 0x0, 0x0, 0x6f, 0xf7, 0x7c,
-    0x10, 0x6, 0xff, 0x70, 0xdf, 0xd1, 0x6f, 0xf7,
+    0x10, 0x6, 0xff, 0x70, 0xdf, 0xc1, 0x6f, 0xf7,
     0x0, 0x1d, 0xfe, 0xff, 0x70, 0x0, 0x1, 0xdf,
     0xf7, 0x0, 0x0, 0x0, 0x1c, 0x60, 0x0, 0x0,
 
@@ -544,7 +544,7 @@ static LV_ATTRIBUTE_LARGE_CONST const uint8_t glyph_bitmap[] = {
     0x10, 0x5, 0xfe, 0xff, 0x44, 0x0, 0x2, 0x66,
     0x66, 0x12, 0x22, 0x0, 0x0, 0x11, 0xff, 0xff,
     0x50, 0x0, 0xda, 0xff, 0xa3, 0x10, 0x8, 0xf4,
-    0xfc, 0xfb, 0x66, 0xbf, 0x80, 0xf5, 0x5c, 0xff,
+    0xfc, 0xfb, 0x66, 0xbf, 0x80, 0xf5, 0x4c, 0xff,
     0xd5, 0x0, 0x31, 0x0, 0x0, 0x0, 0x0,
 
     /* U+F026 "" */
@@ -1148,9 +1148,12 @@ static const lv_font_fmt_txt_cmap_t cmaps[] =
  *  ALL CUSTOM DATA
  *--------------------*/
 
-#if LV_VERSION_CHECK(8, 0, 0)
+#if LVGL_VERSION_MAJOR == 8
 /*Store all the custom data of the font*/
 static  lv_font_fmt_txt_glyph_cache_t cache;
+#endif
+
+#if LVGL_VERSION_MAJOR >= 8
 static const lv_font_fmt_txt_dsc_t font_dsc = {
 #else
 static lv_font_fmt_txt_dsc_t font_dsc = {
@@ -1164,10 +1167,11 @@ static lv_font_fmt_txt_dsc_t font_dsc = {
     .bpp = 4,
     .kern_classes = 0,
     .bitmap_format = 0,
-#if LV_VERSION_CHECK(8, 0, 0)
+#if LVGL_VERSION_MAJOR == 8
     .cache = &cache
 #endif
 };
+
 
 
 /*-----------------
@@ -1175,15 +1179,15 @@ static lv_font_fmt_txt_dsc_t font_dsc = {
  *----------------*/
 
 /*Initialize a public general font descriptor*/
-#if LV_VERSION_CHECK(8, 0, 0)
+#if LVGL_VERSION_MAJOR >= 8
 const lv_font_t lv_font_Acme_Regular_10 = {
 #else
 lv_font_t lv_font_Acme_Regular_10 = {
 #endif
     .get_glyph_dsc = lv_font_get_glyph_dsc_fmt_txt,    /*Function pointer to get glyph's data*/
     .get_glyph_bitmap = lv_font_get_bitmap_fmt_txt,    /*Function pointer to get glyph's bitmap*/
-    .line_height = 10,          /*The maximum line height required by the font  default: (f.src.ascent - f.src.descent)*/
-    .base_line = 2,                          /*Baseline measured from the bottom of the line*/
+    .line_height = 10,          /*The maximum line height required by the font*/
+    .base_line = 1.5,             /*Baseline measured from the bottom of the line*/
 #if !(LVGL_VERSION_MAJOR == 6 && LVGL_VERSION_MINOR == 0)
     .subpx = LV_FONT_SUBPX_NONE,
 #endif
@@ -1191,7 +1195,10 @@ lv_font_t lv_font_Acme_Regular_10 = {
     .underline_position = -1,
     .underline_thickness = 0,
 #endif
-    .dsc = &font_dsc           /*The custom font data. Will be accessed by `get_glyph_bitmap/dsc` */
+    .dsc = &font_dsc,          /*The custom font data. Will be accessed by `get_glyph_bitmap/dsc` */
+#if LV_VERSION_CHECK(8, 2, 0) || LVGL_VERSION_MAJOR >= 9
+    .fallback = NULL,
+#endif
 };
 
 
