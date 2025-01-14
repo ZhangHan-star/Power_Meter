@@ -171,9 +171,7 @@ void ina226_init(void )
   // ESP_LOGI("UserPrintf:", "0x05 Write!");
   esp_err_t err;
   err = ina226_write_reg_16(0x00, 0x4527);
-  ESP_LOGE("UserPrintf:", "ina226_write_reg_16 error:%x", err);
   err = ina226_write_reg_16(0x05, 0x0800);
-  ESP_LOGE("UserPrintf:", "ina226_write_reg_16 error:%x", err);
 }
 
 /**
@@ -187,7 +185,6 @@ void ina226_read_data(float *voltage, float *current, float *power)
   unsigned short data;
   ina226_read_reg_16(INA226_REG_BUS_VOLTAGE,&data);
   *voltage = (float)data *1.25*0.001;
-  // ESP_LOGI("UserPrintf:", "voltage:%x", data);
   ina226_read_reg_16(INA226_REG_CURRENT,&data);
   if (((float)data *0.5)>=20000)
   {
@@ -195,7 +192,6 @@ void ina226_read_data(float *voltage, float *current, float *power)
   }
 
   *current = (float)data *0.5;
-  // ESP_LOGI("UserPrintf:", "current:%x", data);
   ina226_read_reg_16(INA226_REG_POWER,&data);
   *power = (float)data *0.5*25;
 }

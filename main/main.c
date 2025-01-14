@@ -57,9 +57,7 @@ lv_ui guider_ui;
 
 static void ChackKey(void *arg);
 static void Get_Ina226_Data(void *arg);
-static void ChackData_Alarm(void *arg);
 static void Beep_Task(void *arg);
-// static void LED_Task(void *arg);
 
 
 static QueueHandle_t alarm_evt_queue ;
@@ -77,10 +75,7 @@ void app_main(void)
     ESP_ERROR_CHECK(ret);
 
     Key_Init();
-    // BeepInitConfig();
     wifi_init_softap();
-
-    // vTaskDelay(pdMS_TO_TICKS(500));
     ESP_LOGI("UserPrintf:", "Ina226");
     ina226_init();
     ESP_LOGI("UserPrintf:", "Ina226_Init");
@@ -88,7 +83,6 @@ void app_main(void)
     lvgl_driver_init();
     lv_port_indev_init();
     ESP_LOGI("UserPrintf:", "LVGL_Init!");
-    // gpio_set_level(6, 1);//背光
     lv_init();
     lv_color_t *buf1 = heap_caps_malloc(DISP_BUF_SIZE * sizeof(lv_color_t), MALLOC_CAP_DMA);
     assert(buf1 != NULL);
@@ -125,14 +119,6 @@ void app_main(void)
                 6,                             //任务优先级
                 NULL                            //任务句柄
      );
-    //创建一个告警任务
-    // xTaskCreate(ChackData_Alarm,        //任务函数
-    //             "ChackData_Alarm_task",      //任务名字
-    //             1024,                           //任务堆栈
-    //             NULL,                           //传递给任务函数的参数
-    //             5,                             //任务优先级
-    //             NULL                            //任务句柄
-    //  );
     //创建一个ina226读取任务
     xTaskCreate(Get_Ina226_Data,        //任务函数
                 "Get_INA226_task",      //任务名字
@@ -170,7 +156,6 @@ void app_main(void)
         /* Delay 1 tick assumes FreeRTOS tick is 10ms */
         vTaskDelay(pdMS_TO_TICKS(10));
         lv_task_handler();
-        // ESP_LOGI("lvgl","handler");
     }
 }
 
@@ -214,35 +199,6 @@ static void Get_Ina226_Data(void *arg)
     }
 }
 
-static void ChackData_Alarm(void *arg)
-{
-    ESP_LOGI("UserPrintf:", "ChackData_Alarm Start!");
-    float alarm_flag = 0;
-    for(;;)
-    {
-        // if (xQueueReceive(alarm_evt_queue, &alarm_flag, 20 / portTICK_PERIOD_MS)){
-        //     Beep_ON();
-        // }else{
-        //     Beep_OFF();
-        // }
-
-        vTaskDelay(pdMS_TO_TICKS(10));
-    }
-}
-
-
-// static void LED_Task(void *arg)
-// {
-//     led_strip_handle_t led_strip = configure_led();
-//     ESP_LOGI("UserPrintf:", "LED_Task Start!");
-//         led_strip_clear(led_strip);
-//     for(;;)
-//     {
-//         led_strip_set_pixel(led_strip, 0, 255, 255, 255);
-//         led_strip_refresh(led_strip);
-//         vTaskDelay(pdMS_TO_TICKS(100));
-//     }
-// }
 
 static void Beep_Task(void *arg)
 {
