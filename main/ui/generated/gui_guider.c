@@ -83,6 +83,6 @@ void init_scr_del_flag(lv_ui *ui)
 void setup_ui(lv_ui *ui)
 {
     init_scr_del_flag(ui);
-    setup_scr_screen_threshold(ui);
-    lv_scr_load(ui->screen_threshold);
+    setup_scr_screen_value1(ui);
+    lv_scr_load(ui->screen_value1);
 }

@@ -34,7 +34,6 @@ void setup_scr_screen_waveW(lv_ui *ui)
     lv_chart_set_div_line_count(ui->screen_waveW_chart_1, 6, 11);
     lv_chart_set_point_count(ui->screen_waveW_chart_1, 32);
     lv_chart_set_range(ui->screen_waveW_chart_1, LV_CHART_AXIS_PRIMARY_Y, 0, 30);
-    lv_chart_set_axis_tick(ui->screen_waveW_chart_1, LV_CHART_AXIS_PRIMARY_Y, 1, 1, 6, 1, true, 40);
     lv_chart_set_range(ui->screen_waveW_chart_1, LV_CHART_AXIS_SECONDARY_Y, 0, 100);
     lv_chart_set_axis_tick(ui->screen_waveW_chart_1, LV_CHART_AXIS_SECONDARY_Y, 1, 1, 6, 1, true, 40);
     lv_chart_set_zoom_x(ui->screen_waveW_chart_1, 256);
@@ -75,8 +74,8 @@ void setup_scr_screen_waveW(lv_ui *ui)
     lv_chart_set_next_value(ui->screen_waveW_chart_1, ui->screen_waveW_chart_1_0, 0);
     lv_chart_set_next_value(ui->screen_waveW_chart_1, ui->screen_waveW_chart_1_0, 0);
 #endif
-    lv_obj_set_pos(ui->screen_waveW_chart_1, 20, 0);
-    lv_obj_set_size(ui->screen_waveW_chart_1, 120, 70);
+    lv_obj_set_pos(ui->screen_waveW_chart_1, 0, 0);
+    lv_obj_set_size(ui->screen_waveW_chart_1, 140, 70);
     lv_obj_set_scrollbar_mode(ui->screen_waveW_chart_1, LV_SCROLLBAR_MODE_OFF);
 
     //Write style for screen_waveW_chart_1, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
@@ -98,33 +97,33 @@ void setup_scr_screen_waveW(lv_ui *ui)
     lv_obj_set_style_line_color(ui->screen_waveW_chart_1, lv_color_hex(0xe8e8e8), LV_PART_TICKS|LV_STATE_DEFAULT);
     lv_obj_set_style_line_opa(ui->screen_waveW_chart_1, 255, LV_PART_TICKS|LV_STATE_DEFAULT);
 
-    //Write codes screen_waveW_label_1
-    ui->screen_waveW_label_1 = lv_label_create(ui->screen_waveW);
-    lv_label_set_text(ui->screen_waveW_label_1, "0.000W");
-    lv_label_set_long_mode(ui->screen_waveW_label_1, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(ui->screen_waveW_label_1, 20, 61);
-    lv_obj_set_size(ui->screen_waveW_label_1, 120, 19);
+    //Write codes screen_waveW_label_power
+    ui->screen_waveW_label_power = lv_label_create(ui->screen_waveW);
+    lv_label_set_text(ui->screen_waveW_label_power, "0.000W");
+    lv_label_set_long_mode(ui->screen_waveW_label_power, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(ui->screen_waveW_label_power, 20, 61);
+    lv_obj_set_size(ui->screen_waveW_label_power, 120, 19);
 
-    //Write style for screen_waveW_label_1, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
-    lv_obj_set_style_border_width(ui->screen_waveW_label_1, 1, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_border_opa(ui->screen_waveW_label_1, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_border_color(ui->screen_waveW_label_1, lv_color_hex(0x606060), LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_border_side(ui->screen_waveW_label_1, LV_BORDER_SIDE_TOP, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_radius(ui->screen_waveW_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_color(ui->screen_waveW_label_1, lv_color_hex(0x00ff00), LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui->screen_waveW_label_1, &lv_font_Abel_regular_16, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui->screen_waveW_label_1, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_letter_space(ui->screen_waveW_label_1, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_line_space(ui->screen_waveW_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_align(ui->screen_waveW_label_1, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_opa(ui->screen_waveW_label_1, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_color(ui->screen_waveW_label_1, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_grad_dir(ui->screen_waveW_label_1, LV_GRAD_DIR_NONE, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(ui->screen_waveW_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(ui->screen_waveW_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(ui->screen_waveW_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(ui->screen_waveW_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_shadow_width(ui->screen_waveW_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    //Write style for screen_waveW_label_power, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_border_width(ui->screen_waveW_label_power, 1, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_border_opa(ui->screen_waveW_label_power, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_border_color(ui->screen_waveW_label_power, lv_color_hex(0x606060), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_border_side(ui->screen_waveW_label_power, LV_BORDER_SIDE_TOP, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->screen_waveW_label_power, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui->screen_waveW_label_power, lv_color_hex(0x00ff00), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->screen_waveW_label_power, &lv_font_Abel_regular_16, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui->screen_waveW_label_power, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui->screen_waveW_label_power, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui->screen_waveW_label_power, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui->screen_waveW_label_power, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui->screen_waveW_label_power, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_color(ui->screen_waveW_label_power, lv_color_hex(0x000000), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_grad_dir(ui->screen_waveW_label_power, LV_GRAD_DIR_NONE, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui->screen_waveW_label_power, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui->screen_waveW_label_power, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui->screen_waveW_label_power, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui->screen_waveW_label_power, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(ui->screen_waveW_label_power, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
 
     //The custom code of screen_waveW.
 
@@ -132,4 +131,6 @@ void setup_scr_screen_waveW(lv_ui *ui)
     //Update current screen layout.
     lv_obj_update_layout(ui->screen_waveW);
 
+    //Init events for screen.
+    events_init_screen_waveW(ui);
 }

@@ -1,6 +1,9 @@
 #include "Key.h"
 #include "driver/gpio.h"
-
+#include "esp_log.h"
+#include "lvgl.h"
+#include "gui_guider.h"
+#include "freertos/queue.h"
 
 
 void Key_Init(void)
@@ -68,3 +71,104 @@ uint8_t Key_Pressed_handle(KeyState* key_state, bool isKeyPressed) {
     key_state->last_value = isKeyPressed;
     return keyStatus;
 }
+
+uint8_t RightKeyValue = 0;
+uint8_t LeftKeyValue = 0;
+void ChackKey(void* arg)
+{
+    TickType_t xLastWakeTime;
+    const TickType_t xFrequency = pdMS_TO_TICKS(10);  // 10毫秒
+    xLastWakeTime = xTaskGetTickCount();
+
+    extern QueueHandle_t beep_evt_queue;
+
+
+    static KeyState RightKey_state = { false, 0, false };
+    static KeyState LeftKey_state = { false, 0, false };
+
+    ESP_LOGI("UserPrintf:", "ChackKey Start!");
+    for (;;) {
+        // RightKeyValue = Key_Pressed_handle(&RightKey_state,GetKeyValue(9));
+        // if (RightKeyValue!=0)
+        // {
+        //     ESP_LOGI("UserPrintf:", "lastvalue:%d", RightKeyValue);
+        // }
+        // LeftKeyValue = Key_Pressed_handle(&LeftKey_state,GetKeyValue(8));
+        // if (LeftKeyValue!=0)
+        // {
+        //     ESP_LOGI("UserPrintf:", "lastvalue:%d", LeftKeyValue);
+        // }
+
+        RightKeyValue = Key_Pressed_handle(&RightKey_state, GetKeyValue(9));
+        LeftKeyValue = Key_Pressed_handle(&LeftKey_state, GetKeyValue(8));
+        lv_obj_t* nowScr = lv_scr_act();
+        extern lv_ui guider_ui;
+        if (nowScr == guider_ui.screen_value1)
+        {
+            if (RightKeyValue == KEY_Short)
+            {
+                lv_event_send(nowScr, LV_EVENT_PRESSED, NULL);
+            }
+            else if (LeftKeyValue == KEY_Short)
+            {
+                lv_event_send(nowScr, LV_EVENT_CLICKED, NULL);
+            }
+        }
+        else if (nowScr == guider_ui.screen_value2)
+        {
+            if (RightKeyValue == KEY_Short)
+            {
+                lv_event_send(nowScr, LV_EVENT_PRESSED, NULL);
+            }
+            else if (LeftKeyValue == KEY_Short)
+            {
+                lv_event_send(nowScr, LV_EVENT_CLICKED, NULL);
+            }
+        }
+        else if (nowScr == guider_ui.screen_waveVA)
+        {
+            if (RightKeyValue == KEY_Short)
+            {
+                lv_event_send(nowScr, LV_EVENT_PRESSED, NULL);
+            }
+            else if (LeftKeyValue == KEY_Short)
+            {
+                lv_event_send(nowScr, LV_EVENT_CLICKED, NULL);
+            }
+        }
+        else if (nowScr == guider_ui.screen_waveW)
+        {
+            if (RightKeyValue == KEY_Short)
+            {
+                lv_event_send(nowScr, LV_EVENT_PRESSED, NULL);
+            }
+            else if (LeftKeyValue == KEY_Short)
+            {
+                lv_event_send(nowScr, LV_EVENT_CLICKED, NULL);
+            }
+
+        }
+        else if (nowScr == guider_ui.screen_threshold)
+        {
+            if (RightKeyValue == KEY_Short)
+            {
+                lv_event_send(nowScr, LV_EVENT_PRESSED, NULL);
+            }
+        }
+        float nowvalue = 1;
+
+        if (RightKeyValue != 0 || LeftKeyValue != 0)xQueueSend(beep_evt_queue, &nowvalue, portMAX_DELAY);
+        xTaskDelayUntil(&xLastWakeTime, xFrequency);
+    }
+}
+// 获取键对应的值
+        // lastvalue = nowvalue;
+        // nowvalue = GetKeyValue(9);
+
+        // if ((nowvalue != lastvalue)&& nowvalue != 1)
+        // {
+        //     lv_obj_t *nowScr=lv_scr_act();
+        //     lv_event_send(nowScr, LV_EVENT_PRESSING, NULL);//手动发送LV_EVENT_CANCEL事件
+        //     xQueueSend(beep_evt_queue, &nowvalue, portMAX_DELAY);
+        //     vTaskDelay(pdMS_TO_TICKS(200));
+        // }

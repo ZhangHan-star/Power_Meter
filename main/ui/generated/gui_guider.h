@@ -31,9 +31,9 @@ typedef struct
 	bool screen_value2_del;
 	lv_obj_t *screen_value2_line_2;
 	lv_obj_t *screen_value2_line_1;
-	lv_obj_t *screen_value2_label_1;
-	lv_obj_t *screen_value2_label_2;
-	lv_obj_t *screen_value2_label_3;
+	lv_obj_t *screen_value2_label_voltage;
+	lv_obj_t *screen_value2_label_current;
+	lv_obj_t *screen_value2_label_power;
 	lv_obj_t *screen_waveVA;
 	bool screen_waveVA_del;
 	lv_obj_t *screen_waveVA_line_1;
@@ -46,7 +46,7 @@ typedef struct
 	bool screen_waveW_del;
 	lv_obj_t *screen_waveW_chart_1;
 	lv_chart_series_t *screen_waveW_chart_1_0;
-	lv_obj_t *screen_waveW_label_1;
+	lv_obj_t *screen_waveW_label_power;
 	lv_obj_t *screen_threshold;
 	bool screen_threshold_del;
 	lv_obj_t *screen_threshold_line_1;

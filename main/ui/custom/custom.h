@@ -19,6 +19,7 @@ extern int16_t VoltageRange,CurrentRange;
 
 void custom_init(lv_ui *ui);
 void VAP_datashow_timer_cb(lv_timer_t *t);
+void VAP2_datashow_timer_cb(lv_timer_t *t);
 void VAP_Chartshow_timer_cb(lv_timer_t *t);
 
 #ifdef __cplusplus

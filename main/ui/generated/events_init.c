@@ -16,7 +16,9 @@
 #endif
 
 #include "custom.h"
-static lv_timer_t  * task_meter;
+static lv_timer_t  * value1task_meter;
+#include "custom.h"
+static lv_timer_t  * value2task_meter;
 #include "custom.h"
 static lv_timer_t  * ChartShow;
 
@@ -24,20 +26,25 @@ static void screen_value1_event_handler (lv_event_t *e)
 {
     lv_event_code_t code = lv_event_get_code(e);
     switch (code) {
-    case LV_EVENT_PRESSING:
+    case LV_EVENT_PRESSED:
     {
-        ui_load_scr_animation(&guider_ui, &guider_ui.screen_waveVA, guider_ui.screen_waveVA_del, &guider_ui.screen_value1_del, setup_scr_screen_waveVA, LV_SCR_LOAD_ANIM_NONE, 200, 200, false, false);
+        ui_load_scr_animation(&guider_ui, &guider_ui.screen_waveVA, guider_ui.screen_waveVA_del, &guider_ui.screen_value1_del, setup_scr_screen_waveVA, LV_SCR_LOAD_ANIM_NONE, 200, 200, false, true);
         break;
     }
     case LV_EVENT_SCREEN_LOADED:
     {
-        task_meter = lv_timer_create(VAP_datashow_timer_cb, 100, &guider_ui);
+        value1task_meter = lv_timer_create(VAP_datashow_timer_cb, 100, &guider_ui);
 
         break;
     }
     case LV_EVENT_SCREEN_UNLOADED:
     {
-        lv_timer_del(task_meter);
+        lv_timer_del(value1task_meter);
+        break;
+    }
+    case LV_EVENT_CLICKED:
+    {
+        ui_load_scr_animation(&guider_ui, &guider_ui.screen_value2, guider_ui.screen_value2_del, &guider_ui.screen_value1_del, setup_scr_screen_value2, LV_SCR_LOAD_ANIM_NONE, 200, 200, false, true);
         break;
     }
     default:
@@ -50,13 +57,48 @@ void events_init_screen_value1 (lv_ui *ui)
     lv_obj_add_event_cb(ui->screen_value1, screen_value1_event_handler, LV_EVENT_ALL, ui);
 }
 
+static void screen_value2_event_handler (lv_event_t *e)
+{
+    lv_event_code_t code = lv_event_get_code(e);
+    switch (code) {
+    case LV_EVENT_PRESSED:
+    {
+        ui_load_scr_animation(&guider_ui, &guider_ui.screen_waveVA, guider_ui.screen_waveVA_del, &guider_ui.screen_value2_del, setup_scr_screen_waveVA, LV_SCR_LOAD_ANIM_NONE, 200, 200, false, true);
+        break;
+    }
+    case LV_EVENT_CLICKED:
+    {
+        ui_load_scr_animation(&guider_ui, &guider_ui.screen_value1, guider_ui.screen_value1_del, &guider_ui.screen_value2_del, setup_scr_screen_value1, LV_SCR_LOAD_ANIM_NONE, 200, 200, false, true);
+        break;
+    }
+    case LV_EVENT_SCREEN_LOADED:
+    {
+        value2task_meter = lv_timer_create(VAP2_datashow_timer_cb, 100, &guider_ui);
+
+        break;
+    }
+    case LV_EVENT_SCREEN_UNLOADED:
+    {
+        lv_timer_del(value2task_meter);
+        break;
+    }
+    default:
+        break;
+    }
+}
+
+void events_init_screen_value2 (lv_ui *ui)
+{
+    lv_obj_add_event_cb(ui->screen_value2, screen_value2_event_handler, LV_EVENT_ALL, ui);
+}
+
 static void screen_waveVA_event_handler (lv_event_t *e)
 {
     lv_event_code_t code = lv_event_get_code(e);
     switch (code) {
-    case LV_EVENT_PRESSING:
+    case LV_EVENT_PRESSED:
     {
-        ui_load_scr_animation(&guider_ui, &guider_ui.screen_value1, guider_ui.screen_value1_del, &guider_ui.screen_waveVA_del, setup_scr_screen_value1, LV_SCR_LOAD_ANIM_NONE, 200, 200, false, false);
+        ui_load_scr_animation(&guider_ui, &guider_ui.screen_threshold, guider_ui.screen_threshold_del, &guider_ui.screen_waveVA_del, setup_scr_screen_threshold, LV_SCR_LOAD_ANIM_NONE, 200, 200, false, true);
         break;
     }
     case LV_EVENT_SCREEN_LOADED:
@@ -69,6 +111,11 @@ static void screen_waveVA_event_handler (lv_event_t *e)
         lv_timer_del(ChartShow);
         break;
     }
+    case LV_EVENT_CLICKED:
+    {
+        ui_load_scr_animation(&guider_ui, &guider_ui.screen_waveW, guider_ui.screen_waveW_del, &guider_ui.screen_waveVA_del, setup_scr_screen_waveW, LV_SCR_LOAD_ANIM_NONE, 200, 200, false, true);
+        break;
+    }
     default:
         break;
     }
@@ -77,6 +124,49 @@ static void screen_waveVA_event_handler (lv_event_t *e)
 void events_init_screen_waveVA (lv_ui *ui)
 {
     lv_obj_add_event_cb(ui->screen_waveVA, screen_waveVA_event_handler, LV_EVENT_ALL, ui);
+}
+
+static void screen_waveW_event_handler (lv_event_t *e)
+{
+    lv_event_code_t code = lv_event_get_code(e);
+    switch (code) {
+    case LV_EVENT_PRESSED:
+    {
+        ui_load_scr_animation(&guider_ui, &guider_ui.screen_threshold, guider_ui.screen_threshold_del, &guider_ui.screen_waveW_del, setup_scr_screen_threshold, LV_SCR_LOAD_ANIM_NONE, 200, 200, false, true);
+        break;
+    }
+    case LV_EVENT_CLICKED:
+    {
+        ui_load_scr_animation(&guider_ui, &guider_ui.screen_waveVA, guider_ui.screen_waveVA_del, &guider_ui.screen_waveW_del, setup_scr_screen_waveVA, LV_SCR_LOAD_ANIM_NONE, 200, 200, false, true);
+        break;
+    }
+    default:
+        break;
+    }
+}
+
+void events_init_screen_waveW (lv_ui *ui)
+{
+    lv_obj_add_event_cb(ui->screen_waveW, screen_waveW_event_handler, LV_EVENT_ALL, ui);
+}
+
+static void screen_threshold_event_handler (lv_event_t *e)
+{
+    lv_event_code_t code = lv_event_get_code(e);
+    switch (code) {
+    case LV_EVENT_PRESSED:
+    {
+        ui_load_scr_animation(&guider_ui, &guider_ui.screen_value1, guider_ui.screen_value1_del, &guider_ui.screen_threshold_del, setup_scr_screen_value1, LV_SCR_LOAD_ANIM_NONE, 200, 200, false, true);
+        break;
+    }
+    default:
+        break;
+    }
+}
+
+void events_init_screen_threshold (lv_ui *ui)
+{
+    lv_obj_add_event_cb(ui->screen_threshold, screen_threshold_event_handler, LV_EVENT_ALL, ui);
 }
 
 

@@ -76,6 +76,38 @@ void VAP_datashow_timer_cb(lv_timer_t *t)
 
 }
 
+void VAP2_datashow_timer_cb(lv_timer_t *t)
+{
+    lv_ui *ui = t->user_data;
+    if (Voltage<10.0f)
+    {
+        lv_label_set_text_fmt(ui->screen_value2_label_voltage, "电压:%.3fV", Voltage);//set Voltage value
+    } else if (Voltage>=10.0f && Voltage<100.0f)
+    {
+        lv_label_set_text_fmt(ui->screen_value2_label_voltage, "电压:%.2fV", Voltage);//set Voltage value
+    }
+
+    if (Current<10.0f)
+    {
+        lv_label_set_text_fmt(ui->screen_value2_label_current, "电流:%.1fmA", Current);
+    } else if (Current>=10.0f && Current<100.0f)
+    {
+        lv_label_set_text_fmt(ui->screen_value2_label_current, "电流:%.1fmA", Current);
+    } else if (Current>=100.0f && Current<1000.0f)
+    {
+        lv_label_set_text_fmt(ui->screen_value2_label_current, "电流:%.0fmA", Current);
+    } else if (Current>=1000.0f && Current<10000.0f)
+    {
+        lv_label_set_text_fmt(ui->screen_value2_label_current, "电流:%.2fA", Current/1000.0f);
+    } else if (Current>=10000.0f && Current<100000.0f)
+    {
+        lv_label_set_text_fmt(ui->screen_value2_label_current, "电流:%.1fA", Current/1000.0f);
+    }
+
+    lv_label_set_text_fmt(ui->screen_value2_label_power, "功率:%.3fW", Power/1000.0f);
+
+}
+
 int16_t ShowVoltageData,LastVoltageData;
 int16_t ShowCurrentData,LastCurrentData;
 int16_t VoltageRange=50,CurrentRange=10;

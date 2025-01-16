@@ -19,7 +19,10 @@ extern "C" {
 void events_init(lv_ui *ui);
 
 void events_init_screen_value1(lv_ui *ui);
+void events_init_screen_value2(lv_ui *ui);
 void events_init_screen_waveVA(lv_ui *ui);
+void events_init_screen_waveW(lv_ui *ui);
+void events_init_screen_threshold(lv_ui *ui);
 
 #ifdef __cplusplus
 }

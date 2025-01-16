@@ -54,74 +54,74 @@ void setup_scr_screen_value2(lv_ui *ui)
     lv_obj_set_style_line_opa(ui->screen_value2_line_1, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_line_rounded(ui->screen_value2_line_1, true, LV_PART_MAIN|LV_STATE_DEFAULT);
 
-    //Write codes screen_value2_label_1
-    ui->screen_value2_label_1 = lv_label_create(ui->screen_value2);
-    lv_label_set_text(ui->screen_value2_label_1, "电压：0.00V");
-    lv_label_set_long_mode(ui->screen_value2_label_1, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(ui->screen_value2_label_1, 10, 10);
-    lv_obj_set_size(ui->screen_value2_label_1, 110, 20);
+    //Write codes screen_value2_label_voltage
+    ui->screen_value2_label_voltage = lv_label_create(ui->screen_value2);
+    lv_label_set_text(ui->screen_value2_label_voltage, "电压：0.00V");
+    lv_label_set_long_mode(ui->screen_value2_label_voltage, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(ui->screen_value2_label_voltage, 10, 10);
+    lv_obj_set_size(ui->screen_value2_label_voltage, 110, 20);
 
-    //Write style for screen_value2_label_1, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
-    lv_obj_set_style_border_width(ui->screen_value2_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_radius(ui->screen_value2_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_color(ui->screen_value2_label_1, lv_color_hex(0xff0000), LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui->screen_value2_label_1, &lv_font_simkai_16, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui->screen_value2_label_1, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_letter_space(ui->screen_value2_label_1, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_line_space(ui->screen_value2_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_align(ui->screen_value2_label_1, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_opa(ui->screen_value2_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(ui->screen_value2_label_1, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(ui->screen_value2_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(ui->screen_value2_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(ui->screen_value2_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_shadow_width(ui->screen_value2_label_1, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    //Write style for screen_value2_label_voltage, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_border_width(ui->screen_value2_label_voltage, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->screen_value2_label_voltage, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui->screen_value2_label_voltage, lv_color_hex(0xff0000), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->screen_value2_label_voltage, &lv_font_simkai_16, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui->screen_value2_label_voltage, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui->screen_value2_label_voltage, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui->screen_value2_label_voltage, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui->screen_value2_label_voltage, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui->screen_value2_label_voltage, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui->screen_value2_label_voltage, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui->screen_value2_label_voltage, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui->screen_value2_label_voltage, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui->screen_value2_label_voltage, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(ui->screen_value2_label_voltage, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
 
-    //Write codes screen_value2_label_2
-    ui->screen_value2_label_2 = lv_label_create(ui->screen_value2);
-    lv_label_set_text(ui->screen_value2_label_2, "电流：0.0mA");
-    lv_label_set_long_mode(ui->screen_value2_label_2, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(ui->screen_value2_label_2, 10, 30);
-    lv_obj_set_size(ui->screen_value2_label_2, 110, 20);
+    //Write codes screen_value2_label_current
+    ui->screen_value2_label_current = lv_label_create(ui->screen_value2);
+    lv_label_set_text(ui->screen_value2_label_current, "电流：0.0mA");
+    lv_label_set_long_mode(ui->screen_value2_label_current, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(ui->screen_value2_label_current, 10, 30);
+    lv_obj_set_size(ui->screen_value2_label_current, 110, 20);
 
-    //Write style for screen_value2_label_2, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
-    lv_obj_set_style_border_width(ui->screen_value2_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_radius(ui->screen_value2_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_color(ui->screen_value2_label_2, lv_color_hex(0xffff00), LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui->screen_value2_label_2, &lv_font_simkai_16, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui->screen_value2_label_2, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_letter_space(ui->screen_value2_label_2, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_line_space(ui->screen_value2_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_align(ui->screen_value2_label_2, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_opa(ui->screen_value2_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(ui->screen_value2_label_2, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(ui->screen_value2_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(ui->screen_value2_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(ui->screen_value2_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_shadow_width(ui->screen_value2_label_2, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    //Write style for screen_value2_label_current, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_border_width(ui->screen_value2_label_current, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->screen_value2_label_current, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui->screen_value2_label_current, lv_color_hex(0xffff00), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->screen_value2_label_current, &lv_font_simkai_16, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui->screen_value2_label_current, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui->screen_value2_label_current, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui->screen_value2_label_current, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui->screen_value2_label_current, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui->screen_value2_label_current, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui->screen_value2_label_current, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui->screen_value2_label_current, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui->screen_value2_label_current, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui->screen_value2_label_current, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(ui->screen_value2_label_current, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
 
-    //Write codes screen_value2_label_3
-    ui->screen_value2_label_3 = lv_label_create(ui->screen_value2);
-    lv_label_set_text(ui->screen_value2_label_3, "功率：0.00W");
-    lv_label_set_long_mode(ui->screen_value2_label_3, LV_LABEL_LONG_WRAP);
-    lv_obj_set_pos(ui->screen_value2_label_3, 10, 50);
-    lv_obj_set_size(ui->screen_value2_label_3, 110, 20);
+    //Write codes screen_value2_label_power
+    ui->screen_value2_label_power = lv_label_create(ui->screen_value2);
+    lv_label_set_text(ui->screen_value2_label_power, "功率：0.00W");
+    lv_label_set_long_mode(ui->screen_value2_label_power, LV_LABEL_LONG_WRAP);
+    lv_obj_set_pos(ui->screen_value2_label_power, 10, 50);
+    lv_obj_set_size(ui->screen_value2_label_power, 110, 20);
 
-    //Write style for screen_value2_label_3, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
-    lv_obj_set_style_border_width(ui->screen_value2_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_radius(ui->screen_value2_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_color(ui->screen_value2_label_3, lv_color_hex(0x00ff00), LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui->screen_value2_label_3, &lv_font_simkai_16, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui->screen_value2_label_3, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_letter_space(ui->screen_value2_label_3, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_line_space(ui->screen_value2_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_align(ui->screen_value2_label_3, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_opa(ui->screen_value2_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_top(ui->screen_value2_label_3, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_right(ui->screen_value2_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_bottom(ui->screen_value2_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_pad_left(ui->screen_value2_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_shadow_width(ui->screen_value2_label_3, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    //Write style for screen_value2_label_power, Part: LV_PART_MAIN, State: LV_STATE_DEFAULT.
+    lv_obj_set_style_border_width(ui->screen_value2_label_power, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_radius(ui->screen_value2_label_power, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui->screen_value2_label_power, lv_color_hex(0x00ff00), LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->screen_value2_label_power, &lv_font_simkai_16, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui->screen_value2_label_power, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui->screen_value2_label_power, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui->screen_value2_label_power, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_align(ui->screen_value2_label_power, LV_TEXT_ALIGN_CENTER, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui->screen_value2_label_power, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_top(ui->screen_value2_label_power, 2, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_right(ui->screen_value2_label_power, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_bottom(ui->screen_value2_label_power, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_pad_left(ui->screen_value2_label_power, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_shadow_width(ui->screen_value2_label_power, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
 
     //The custom code of screen_value2.
 
@@ -129,4 +129,6 @@ void setup_scr_screen_value2(lv_ui *ui)
     //Update current screen layout.
     lv_obj_update_layout(ui->screen_value2);
 
+    //Init events for screen.
+    events_init_screen_value2(ui);
 }

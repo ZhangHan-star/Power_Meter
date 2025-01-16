@@ -25,5 +25,6 @@ typedef struct {
 void Key_Init(void);
 bool GetKeyValue(uint8_t Key_num);
 uint8_t Key_Pressed_handle(KeyState* key_state, bool isKeyPressed);
+void ChackKey(void *arg);
 
 #endif

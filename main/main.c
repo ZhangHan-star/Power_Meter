@@ -55,13 +55,13 @@ void lv_tick_task(void *arg)
 
 lv_ui guider_ui;
 
-static void ChackKey(void *arg);
+// static void ChackKey(void *arg);
 static void Get_Ina226_Data(void *arg);
 static void Beep_Task(void *arg);
 
 
 static QueueHandle_t alarm_evt_queue ;
-static QueueHandle_t beep_evt_queue ;
+QueueHandle_t beep_evt_queue ;
 
 void app_main(void)
 {
@@ -74,16 +74,16 @@ void app_main(void)
     }
     ESP_ERROR_CHECK(ret);
 
-    Key_Init();
+    // Key_Init();
     wifi_init_softap();
     ESP_LOGI("UserPrintf:", "Ina226");
     ina226_init();
     ESP_LOGI("UserPrintf:", "Ina226_Init");
+    ESP_LOGI("UserPrintf:", "LVGL_Init!");
+    lv_init();
     /* Initialize SPI or I2C bus used by the drivers */
     lvgl_driver_init();
     lv_port_indev_init();
-    ESP_LOGI("UserPrintf:", "LVGL_Init!");
-    lv_init();
     lv_color_t *buf1 = heap_caps_malloc(DISP_BUF_SIZE * sizeof(lv_color_t), MALLOC_CAP_DMA);
     assert(buf1 != NULL);
     static lv_color_t *buf2 = NULL;
@@ -114,7 +114,7 @@ void app_main(void)
     //创建一个按键检测任务
     xTaskCreate(ChackKey,        //任务函数
                 "ChackKey_task",      //任务名字
-                1024,                           //任务堆栈
+                2048,                           //任务堆栈
                 NULL,                           //传递给任务函数的参数
                 6,                             //任务优先级
                 NULL                            //任务句柄
@@ -162,44 +162,7 @@ void app_main(void)
 
 
 
-static void ChackKey(void *arg)
-{
-    TickType_t xLastWakeTime;
-    const TickType_t xFrequency = pdMS_TO_TICKS(10);  // 10毫秒
-    xLastWakeTime = xTaskGetTickCount();
 
-    uint8_t RightKeyValue = 0;
-    uint8_t LeftKeyValue = 0;
-    static KeyState RightKey_state = {false, 0, false};
-    static KeyState LeftKey_state = {false, 0, false};
-
-    ESP_LOGI("UserPrintf:", "ChackKey Start!");
-    for (;;){
-        // 获取键对应的值
-        // lastvalue = nowvalue;
-        // nowvalue = GetKeyValue(9);
-
-        // if ((nowvalue != lastvalue)&& nowvalue != 1)
-        // {
-        //     lv_obj_t *nowScr=lv_scr_act();
-        //     lv_event_send(nowScr, LV_EVENT_PRESSING, NULL);//手动发送LV_EVENT_CANCEL事件
-        //     xQueueSend(beep_evt_queue, &nowvalue, portMAX_DELAY);
-        //     vTaskDelay(pdMS_TO_TICKS(200));
-        // }
-        RightKeyValue = Key_Pressed_handle(&RightKey_state,GetKeyValue(9));
-        if (RightKeyValue!=0)
-        {
-            ESP_LOGI("UserPrintf:", "lastvalue:%d", RightKeyValue);
-        }
-        LeftKeyValue = Key_Pressed_handle(&LeftKey_state,GetKeyValue(8));
-        if (LeftKeyValue!=0)
-        {
-            ESP_LOGI("UserPrintf:", "lastvalue:%d", LeftKeyValue);
-        }
-
-        xTaskDelayUntil(&xLastWakeTime, xFrequency);
-    }
-}
 
 static void Get_Ina226_Data(void *arg)
 {
