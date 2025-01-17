@@ -223,3 +223,62 @@ void VAP_Chartshow_timer_cb(lv_timer_t *t)
     }
 
 }
+
+/**
+ * @brief 图表数据显示
+ *
+ * @param t
+ */
+int16_t ShowPowerData,LastPowerData;
+int16_t PowerRange=50;
+void VAPW_Chartshow_timer_cb(lv_timer_t *t)
+{
+    lv_ui *ui = t->user_data;
+    LastPowerData = ShowPowerData;
+    ShowPowerData = (int16_t)((float)Power/100.0f);
+
+    lv_chart_set_next_value(ui->screen_waveW_chart_1, ui->screen_waveW_chart_1_0, (int16_t)Power/10.0f);
+    lv_label_set_text_fmt(ui->screen_waveW_label_power, "%.3fW", Power/1000.0f);
+
+    //设置功率显示量程
+    if (ShowPowerData>1 && LastPowerData<=1)
+    {
+        lv_chart_set_range(ui->screen_waveW_chart_1, LV_CHART_AXIS_SECONDARY_Y, 0, 10*100);
+        PowerRange = 10;
+    }
+    if (ShowPowerData>10 && LastPowerData<=10)
+    {
+        lv_chart_set_range(ui->screen_waveW_chart_1, LV_CHART_AXIS_SECONDARY_Y, 0, 50*100);
+        PowerRange = 50;
+    }
+    if (ShowPowerData>50 && LastPowerData<=50)
+    {
+        lv_chart_set_range(ui->screen_waveW_chart_1, LV_CHART_AXIS_SECONDARY_Y, 0, 100*100);
+        PowerRange = 100;
+    }
+    if (ShowPowerData>100 && LastPowerData<=100)
+    {
+        lv_chart_set_range(ui->screen_waveW_chart_1, LV_CHART_AXIS_SECONDARY_Y, 0, 300*100);
+        PowerRange = 300;
+    }
+    if (ShowPowerData<80 && LastPowerData>=80)
+    {
+        lv_chart_set_range(ui->screen_waveW_chart_1, LV_CHART_AXIS_SECONDARY_Y, 0, 100*100);
+        PowerRange = 100;
+    }
+    if (ShowPowerData<33 && LastPowerData>=33)
+    {
+        lv_chart_set_range(ui->screen_waveW_chart_1, LV_CHART_AXIS_SECONDARY_Y, 0, 50*100);
+        PowerRange = 50;
+    }
+    if (ShowPowerData<8 && LastPowerData>=8)
+    {
+        lv_chart_set_range(ui->screen_waveW_chart_1, LV_CHART_AXIS_SECONDARY_Y, 0, 10*100);
+        PowerRange = 10;
+    }
+    if (ShowPowerData<0.8 && LastPowerData>=8)
+    {
+        lv_chart_set_range(ui->screen_waveW_chart_1, LV_CHART_AXIS_SECONDARY_Y, 0, 8*100);
+        PowerRange = 1;
+    }
+}

@@ -21,6 +21,8 @@ static lv_timer_t  * value1task_meter;
 static lv_timer_t  * value2task_meter;
 #include "custom.h"
 static lv_timer_t  * ChartShow;
+#include "custom.h"
+static lv_timer_t  * ChartWShow;
 
 static void screen_value1_event_handler (lv_event_t *e)
 {
@@ -138,6 +140,16 @@ static void screen_waveW_event_handler (lv_event_t *e)
     case LV_EVENT_CLICKED:
     {
         ui_load_scr_animation(&guider_ui, &guider_ui.screen_waveVA, guider_ui.screen_waveVA_del, &guider_ui.screen_waveW_del, setup_scr_screen_waveVA, LV_SCR_LOAD_ANIM_NONE, 200, 200, false, true);
+        break;
+    }
+    case LV_EVENT_SCREEN_LOADED:
+    {
+        ChartWShow = lv_timer_create(VAPW_Chartshow_timer_cb, 100, &guider_ui);
+        break;
+    }
+    case LV_EVENT_SCREEN_UNLOADED:
+    {
+        lv_timer_del(ChartWShow);
         break;
     }
     default:
