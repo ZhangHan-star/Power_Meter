@@ -230,7 +230,7 @@ void VAP_Chartshow_timer_cb(lv_timer_t *t)
  * @param t
  */
 int16_t ShowPowerData,LastPowerData;
-int16_t PowerRange=50;
+int16_t PowerRange=50,NowPowerRange=0;
 void VAPW_Chartshow_timer_cb(lv_timer_t *t)
 {
     lv_ui *ui = t->user_data;
@@ -241,44 +241,44 @@ void VAPW_Chartshow_timer_cb(lv_timer_t *t)
     lv_label_set_text_fmt(ui->screen_waveW_label_power, "%.3fW", Power/1000.0f);
 
     //设置功率显示量程
-    if (ShowPowerData>1 && LastPowerData<=1)
+    if (ShowPowerData>1*100 && LastPowerData<=1*100)
     {
         lv_chart_set_range(ui->screen_waveW_chart_1, LV_CHART_AXIS_SECONDARY_Y, 0, 10*100);
-        PowerRange = 10;
+        PowerRange = 10*100;
     }
-    if (ShowPowerData>10 && LastPowerData<=10)
+    if (ShowPowerData>10*100 && LastPowerData<=10*100)
     {
         lv_chart_set_range(ui->screen_waveW_chart_1, LV_CHART_AXIS_SECONDARY_Y, 0, 50*100);
-        PowerRange = 50;
+        PowerRange = 50*100;
     }
-    if (ShowPowerData>50 && LastPowerData<=50)
+    if (ShowPowerData>50*100 && LastPowerData<=50*100)
     {
         lv_chart_set_range(ui->screen_waveW_chart_1, LV_CHART_AXIS_SECONDARY_Y, 0, 100*100);
-        PowerRange = 100;
+        PowerRange = 100*100;
     }
-    if (ShowPowerData>100 && LastPowerData<=100)
+    if (ShowPowerData>100*100 && LastPowerData<=100*100)
     {
         lv_chart_set_range(ui->screen_waveW_chart_1, LV_CHART_AXIS_SECONDARY_Y, 0, 300*100);
-        PowerRange = 300;
+        PowerRange = 300*100;
     }
-    if (ShowPowerData<80 && LastPowerData>=80)
+    if (ShowPowerData<80*100 && LastPowerData>=80*100)
     {
         lv_chart_set_range(ui->screen_waveW_chart_1, LV_CHART_AXIS_SECONDARY_Y, 0, 100*100);
-        PowerRange = 100;
+        PowerRange = 100*100;
     }
-    if (ShowPowerData<33 && LastPowerData>=33)
+    if (ShowPowerData<33*100 && LastPowerData>=33*100)
     {
         lv_chart_set_range(ui->screen_waveW_chart_1, LV_CHART_AXIS_SECONDARY_Y, 0, 50*100);
-        PowerRange = 50;
+        PowerRange = 50*100;
     }
-    if (ShowPowerData<8 && LastPowerData>=8)
+    if (ShowPowerData<8*100 && LastPowerData>=8*100)
     {
         lv_chart_set_range(ui->screen_waveW_chart_1, LV_CHART_AXIS_SECONDARY_Y, 0, 10*100);
-        PowerRange = 10;
+        PowerRange = 10*100;
     }
-    if (ShowPowerData<0.8 && LastPowerData>=8)
+    if (ShowPowerData<1*100 && LastPowerData>=1*100)
     {
-        lv_chart_set_range(ui->screen_waveW_chart_1, LV_CHART_AXIS_SECONDARY_Y, 0, 8*100);
-        PowerRange = 1;
+        lv_chart_set_range(ui->screen_waveW_chart_1, LV_CHART_AXIS_SECONDARY_Y, 0, 1*100);
+        PowerRange = 1*100;
     }
 }
