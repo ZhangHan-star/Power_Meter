@@ -33,7 +33,8 @@ void setup_scr_screen_waveW(lv_ui *ui)
     lv_chart_set_type(ui->screen_waveW_chart_1, LV_CHART_TYPE_LINE);
     lv_chart_set_div_line_count(ui->screen_waveW_chart_1, 6, 11);
     lv_chart_set_point_count(ui->screen_waveW_chart_1, 32);
-    lv_chart_set_range(ui->screen_waveW_chart_1, LV_CHART_AXIS_SECONDARY_Y, 0, 100);
+    lv_chart_set_range(ui->screen_waveW_chart_1, LV_CHART_AXIS_PRIMARY_Y, 0, 0);
+    lv_chart_set_range(ui->screen_waveW_chart_1, LV_CHART_AXIS_SECONDARY_Y, 0, 10);
     lv_chart_set_axis_tick(ui->screen_waveW_chart_1, LV_CHART_AXIS_SECONDARY_Y, 1, 1, 6, 1, true, 40);
     lv_chart_set_zoom_x(ui->screen_waveW_chart_1, 256);
     lv_chart_set_zoom_y(ui->screen_waveW_chart_1, 256);
@@ -107,7 +108,7 @@ void setup_scr_screen_waveW(lv_ui *ui)
     lv_obj_set_style_border_width(ui->screen_waveW_label_power, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_radius(ui->screen_waveW_label_power, 0, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_text_color(ui->screen_waveW_label_power, lv_color_hex(0x00ff00), LV_PART_MAIN|LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui->screen_waveW_label_power, &lv_font_Abel_regular_16, LV_PART_MAIN|LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui->screen_waveW_label_power, &lv_font_Abel_regular_22, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui->screen_waveW_label_power, 255, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_text_letter_space(ui->screen_waveW_label_power, 5, LV_PART_MAIN|LV_STATE_DEFAULT);
     lv_obj_set_style_text_line_space(ui->screen_waveW_label_power, 0, LV_PART_MAIN|LV_STATE_DEFAULT);

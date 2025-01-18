@@ -93,6 +93,7 @@ LV_FONT_DECLARE(lv_font_simkai_16)
 LV_FONT_DECLARE(lv_font_montserratMedium_16)
 LV_FONT_DECLARE(lv_font_Alatsi_Regular_12)
 LV_FONT_DECLARE(lv_font_Abel_regular_16)
+LV_FONT_DECLARE(lv_font_Abel_regular_22)
 LV_FONT_DECLARE(lv_font_montserratMedium_12)
 
 
